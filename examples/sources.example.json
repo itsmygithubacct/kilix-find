@@ -1,0 +1,13 @@
+{
+  "schema": "kilix.find.sources/v1",
+  "sources": [
+    {
+      "key": "note",
+      "path": "/absolute/path/note.txt",
+      "kind": "text",
+      "group": "notes",
+      "split": "saved",
+      "title": "Example note"
+    }
+  ]
+}

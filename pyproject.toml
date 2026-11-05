@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kilix-find"
+version = "0.1.0"
+description = "BM25 search over an explicit list of saved sources"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "itsmygithubacct", email = "itsmygithubacct@users.noreply.github.com" }]
+keywords = ["search", "bm25", "kilix"]
+classifiers = [
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Text Processing :: Indexing",
+]
+dependencies = []
+
+[project.scripts]
+kilix-find = "kilix_find.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+kilix_find = ["py.typed"]
