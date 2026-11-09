@@ -33,6 +33,12 @@ make test
 ./kilix-find --index content.sqlite verify --sources
 ```
 
+The last two lines do not work as written: a first argument that is not a
+command makes the whole line a search, so the first searches for the word
+`sources` and the second fails on `--sources`. Put the command first:
+`./kilix-find sources --index content.sqlite` and
+`./kilix-find verify --index content.sqlite --sources`.
+
 `make all` byte-compiles the checkout and checks that the `kilix-find`
 launcher is executable; it is the target the content catalog builds. `make
 check` compiles and runs the suite, `make clean` removes bytecode.
@@ -87,7 +93,7 @@ sources.json --> snapshot each file --> records --> SQLite FTS5 index
                   bytes checked twice)   excerpts)      read-only at search)
 ```
 
-`index` opens each listed file without following links, reads it, and checks
+`index` resolves each listed path to the regular file it names, reads it, and checks
 that its size and timestamps did not change while it was read. Text files are
 split into overlapping excerpts of about 1000 characters; rollout files are
 read line by line and only eligible message text is kept. Each excerpt records
